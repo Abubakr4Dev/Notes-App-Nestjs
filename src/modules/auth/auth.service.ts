@@ -26,8 +26,8 @@ export class AuthService {
     if (!isPasswordValid) {
       throw new HttpException('ivalid password', HttpStatus.UNAUTHORIZED);
     }
-
-    const payload = { sub: user._id, email: user.email };
+    // id here was named sub in  the jwt docs, but it's actually _id in the token
+    const payload = { id: user._id, email: user.email };
 
     return {
       access_token: await this.jwtService.signAsync(payload),
@@ -36,11 +36,11 @@ export class AuthService {
 
   async register(userData: RegisterDto) {
     const user = await this.userService.create(userData);
-    const payload = { sub: user._id, email: user.email };
+    // id here was named sub in  the jwt docs, but it's actually _id in the token
+    const payload = { id: user._id, email: user.email };
     return {
       access_token: await this.jwtService.signAsync(payload),
       user,
     };
   }
-  
 }
