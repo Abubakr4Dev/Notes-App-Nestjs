@@ -31,6 +31,15 @@
 ```bash
 $ yarn install
 ```
+## .env file
+
+In order to spin up the project, in the root create .env with these three variables, with your own values.
+
+PORT
+
+MONGO_URI
+
+JWT_SECRET
 
 ## Running the app
 
